@@ -8,7 +8,7 @@ A simple tool to open and add text to files.
 sudo apt update
 sudo apt install g++
 
-git clone https://github.com/reznote1401-debug/ofor.git
+git clone https://github.com/scurb-getCPP/ofor.git
 cd ofor
 
 g++ main.cpp ofor.cpp -o fm
