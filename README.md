@@ -18,4 +18,5 @@ sudo mv fm /usr/local/bin/
 ```bash
 fm fopen fileName (open file)
 fm fadd fileName (edit or create file)
+if you finished, use (exit)
 ```
