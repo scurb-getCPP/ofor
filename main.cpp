@@ -39,7 +39,7 @@ int main(int argc, const char* argv[]){
 			}
 
 				cout<<"file ready" <<endl;
-				cout<<"wanna add something in (y/n)\n(exit) : " <<flush;
+				cout<<"wanna add something in (y/n) : " <<flush;
 
 				cin>>choice;
 				cin.ignore();
