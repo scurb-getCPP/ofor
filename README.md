@@ -1,7 +1,10 @@
-#ofor
-open file or read
+# ofor
 
-#how to use
+A simple tool to open and add text to files.
+
+## How to Install
+
+```bash
 sudo apt update
 sudo apt install g++
 
@@ -10,8 +13,9 @@ cd ofor
 
 g++ main.cpp ofor.cpp -o fm
 sudo mv fm /usr/local/bin/
-
-#run
+```
+# How to use
+```bash
 fm fopen fileName (open file)
-fm fadd fileName (add file or edit file)
-Type (exit) when you are finished.
+fm fadd fileName (edit or create file)
+```
