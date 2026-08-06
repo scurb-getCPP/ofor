@@ -4,65 +4,49 @@
 #include "ofor.h"
 
 using namespace std;
-
 int main(int argc, const char* argv[]){
-	ofor inputFile;
+    if (argc < 3) {
+        cerr<<"use : [Command] [File Name]" <<endl;
+        return 1;
+    }
 
-	if (argc < 3){
-		cerr<<"use : <command> <file name>" <<endl;
-		return 1;
-	}
-	string command = argv[1];
+    string command = argv[1];
 
-	if (command == "fopen"){
-		for (auto fd = argv + 2; fd != argv + argc; ++fd){
-			ifstream file(*fd);
+    for (auto fi = argv + 2; fi != argv + argc; ++fi){
+            if (command == "open"){
+                ifstream file(*fi);
 
-			if (file.is_open()){
-				inputFile.fileDetail(file);
-			}
-			else {
-				cerr<<"CANT OPEN : " <<string(*fd) <<endl;
-			}	
-		}
-	}
-	else if (command == "fadd"){
-		for (auto fa = argv + 2; fa != argv + argc; ++fa){
-			ofstream file(*fa, ios::app);
+                if (!file){
+                        cerr<<"file cant open : " <<*fi <<endl;
+                }
+                else {
+                        readFile(file);
+                        file.close();
+                }
+            }
 
-			string choice;
-			string textOrCode;
+            else if (command == "add") {
+                ofstream out(*fi, ios::app | ios::out);
 
-			if (!file.is_open()){
-				cerr<<"file not created : " <<*fa <<endl;
-				continue;
-			}
 
-				cout<<"file ready" <<endl;
-				cout<<"wanna add something in (y/n) : " <<flush;
+                if (!out){
+                        cerr<<"file not created : " <<*fi <<endl;
+                }
+                else{
+                        cout<<"file name : " <<*fi <<endl;
+                        cout<<"enter your code or text : " <<endl;
+                        string choice;
+                        while(true){
+                                getline(cin, choice);
 
-				cin>>choice;
-				cin.ignore();
-			if (choice == "y" || choice == "yes"){
-				cout<<"enter your text or code : " <<endl;
+                                if (choice == "exit")
+                                        break;
 
-				while (true){
-					getline(cin, textOrCode);
-
-					if (textOrCode == "exit")
-						break;
-
-					inputFile.writeInFile(file, textOrCode);
-				}
-			}
-			else if (choice == "n" || choice == "no" || choice == "exit"){
-				cout<<"done" <<endl;
-			}
-			else{
-				cout<<"enter true command!" <<endl;
-			}
-		}
-	}
-
-	return 0;
+                                writeIn(out, choice);
+                        }
+                        out.close();
+                }
+            }
+    }
+        return 0;
 }
