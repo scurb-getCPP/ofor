@@ -1,12 +1,17 @@
 #include "ofor.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 void ofor::fileDetail(ifstream& input){
 	string line;
+	vector<string> lines;
 	while (getline(input, line)){
-		cout<<line <<endl;
+		lines.push_back(line);
+	}
+	for (size_t l = 0; l < lines.size(); ++l){
+		cout<<l + 1 <<" : " <<lines[l] <<endl;
 	}
 }
 void ofor::writeInFile(ostream& write, const string& text){
