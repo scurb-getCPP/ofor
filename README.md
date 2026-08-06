@@ -15,6 +15,7 @@ g++ main.cpp ofor.cpp -o fm
 sudo mv fm /usr/local/bin/
 ```
 # How to use
+```bash
 fm open fileName (open file)
 fm add fileName (edit or create file)
 if you finished, use (exit)
