@@ -6,8 +6,8 @@
 
 class ofor{
 public:
-	void fileDetail(std::ifstream& input);
-	void writeInFile(std::ostream& write, const std::string& text);
+	void readFile(std::ifstream& input);
+	void writeIn(std::ostream& write, const std::string& text);
 
 };
 #endif
