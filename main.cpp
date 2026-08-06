@@ -63,7 +63,7 @@ int main(int argc, const char* argv[]){
                     Ofor.writeIn(out, ln);
                 }
             }
-                cout<<"file copied succesfully" <<endl;
+            cout<<"file copied succesfully" <<endl;
     }
         return 0;
 }
