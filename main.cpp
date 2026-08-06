@@ -48,26 +48,22 @@ int main(int argc, const char* argv[]){
                         }
                         out.close();
                 }
-                else if (command == "copy"){
-                    string lines;
-                    vector<string> text;
-                    ifstream in;
-                    ofstream out;
-
-                    in.open(argv[2]);
-                    out.open(argv[3]);
-
-                    while(getline(in, lines)){
-                        text.push_back(lines);
-                    }
-                    for (const string& line : text){
-                        writeIn(out, line);
-                    }
-
-                    }
-                    cout<<"file copied succesfully" <<endl;
-
             }
+            else if (command == "copy"){
+                string line;
+                vector<string> lines;
+
+                ifstream in(argv[2]);
+                ofstream out(argv[3]);
+
+                while(getline(in, line)){
+                    lines.push_back(line);
+                }
+                for (const string& ln : lines){
+                    Ofor.writeIn(out, ln);
+                }
+            }
+                cout<<"file copied succesfully" <<endl;
     }
         return 0;
 }
