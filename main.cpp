@@ -5,6 +5,7 @@
 
 using namespace std;
 int main(int argc, const char* argv[]){
+    ofor ofor;
     if (argc < 3) {
         cerr<<"use : [Command] [File Name]" <<endl;
         return 1;
