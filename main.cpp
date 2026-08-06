@@ -5,7 +5,7 @@
 
 using namespace std;
 int main(int argc, const char* argv[]){
-    ofor ofor;
+    ofor Ofor;
     if (argc < 3) {
         cerr<<"use : [Command] [File Name]" <<endl;
         return 1;
@@ -21,7 +21,7 @@ int main(int argc, const char* argv[]){
                         cerr<<"file cant open : " <<*fi <<endl;
                 }
                 else {
-                        ofor.readFile(file);
+                        Ofor.readFile(file);
                         file.close();
                 }
             }
@@ -43,7 +43,7 @@ int main(int argc, const char* argv[]){
                                 if (choice == "exit")
                                         break;
 
-                                ofor.writeIn(out, choice);
+                                Ofor.writeIn(out, choice);
                         }
                         out.close();
                 }
