@@ -47,6 +47,25 @@ int main(int argc, const char* argv[]){
                         }
                         out.close();
                 }
+                else if (command == "copy"){
+                    string lines;
+                    vector<string> text;
+                    ifstream in;
+                    ofstream out;
+
+                    in.open(argv[2]);
+                    out.open(argv[3]);
+
+                    while(getline(in, lines)){
+                        text.push_back(lines);
+                    }
+                    for (const string& line : text){
+                        writeIn(out, line);
+                    }
+
+                    }
+                    cout<<"file copied succesfully" <<endl;
+
             }
     }
         return 0;
