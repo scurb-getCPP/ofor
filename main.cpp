@@ -5,8 +5,6 @@
 
 using namespace std;
 int main(int argc, const char* argv[]){
-    ofor readFile;
-    ofor writeIn;
     if (argc < 3) {
         cerr<<"use : [Command] [File Name]" <<endl;
         return 1;
@@ -22,7 +20,7 @@ int main(int argc, const char* argv[]){
                         cerr<<"file cant open : " <<*fi <<endl;
                 }
                 else {
-                        readFile(file);
+                        ofor.readFile(file);
                         file.close();
                 }
             }
@@ -44,7 +42,7 @@ int main(int argc, const char* argv[]){
                                 if (choice == "exit")
                                         break;
 
-                                writeIn(out, choice);
+                                ofor.writeIn(out, choice);
                         }
                         out.close();
                 }
