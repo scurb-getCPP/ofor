@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void ofor::fileDetail(ifstream& input){
+void ofor::readFile(ifstream& input){
 	string line;
 	vector<string> lines;
 	while (getline(input, line)){
@@ -14,6 +14,6 @@ void ofor::fileDetail(ifstream& input){
 		cout<<l + 1 <<" : " <<lines[l] <<endl;
 	}
 }
-void ofor::writeInFile(ostream& write, const string& text){
+void ofor::writeIn(ostream& write, const string& text){
 	write<<text <<endl;
 }
