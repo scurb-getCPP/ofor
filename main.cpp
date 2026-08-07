@@ -54,7 +54,7 @@ int main(int argc, const char* argv[]){
                 vector<string> lines;
 
                 ifstream in(argv[2]);
-                ofstream out(argv[3]);
+                ofstream out(argv[3], ios::app);
 
                 while(getline(in, line)){
                     lines.push_back(line);
