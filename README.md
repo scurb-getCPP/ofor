@@ -11,7 +11,7 @@ sudo apt install g++
 git clone https://github.com/scurb-getCPP/ofor.git
 cd ofor
 
-g++ main.cpp ofor.cpp -o fm
+g++ main.cpp ofor.cpp -o file
 sudo mv fm /usr/local/bin/
 ```
 # How to use
