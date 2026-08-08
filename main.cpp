@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -6,63 +7,77 @@
 
 using namespace std;
 int main(int argc, const char* argv[]){
-    ofor Ofor;
-    if (argc < 3) {
-        cerr<<"use : [Command] [File Name]" <<endl;
-        return 1;
-    }
 
-    string command = argv[1];
+        if(argc < 3){
+                cout<<"use : [command] [file name]" <<endl;
+                return 1;
+        }
 
-    for (auto fi = argv + 2; fi != argv + argc; ++fi){
-            if (command == "open"){
-                ifstream file(*fi);
+        ofor Ofor;
 
-                if (!file){
-                        cerr<<"file cant open : " <<*fi <<endl;
-                }
-                else {
-                        Ofor.readFile(file);
-                        file.close();
-                }
-            }
+        string commands = "open copy edit";
+        istringstream iss(commands);
 
-            else if (command == "add") {
-                ofstream out(*fi, ios::app | ios::out);
+        string openCommand;
+        string copyCommand;
+        string editCommand;
 
+        iss>> openCommand>> copyCommand >>editCommand;
 
-                if (!out){
-                        cerr<<"file not created : " <<*fi <<endl;
-                }
-                else{
-                        cout<<"file name : " <<*fi <<endl;
-                        cout<<"enter your code or text : " <<endl;
-                        string choice;
-                        while(true){
-                                getline(cin, choice);
+        for(auto fi = argv + 2; fi != argv + argc; ++fi){
 
-                                if (choice == "exit")
-                                        break;
+                if(argv[1] == openCommand){
+                        ifstream file(*fi);
 
-                                Ofor.writeIn(out, choice);
+                        if(!file) {
+                                cerr<<"file cant open : " <<*fi <<endl;
                         }
-                        out.close();
+                        else{
+                                Ofor.openFile(file);
+                                file.close();
+                        }
                 }
-            }
-            else if (command == "copy"){
-                string line;
-                vector<string> lines;
+                else if(argv[1] == copyCommand){
+                        string text;
+                        vector<string> texts;
 
-                ifstream in(argv[2]);
-                ofstream out(argv[3], ios::app);
+                        ifstream file1(argv[2]);
+                        ofstream file2(argv[3], ios::app);
 
-                while(getline(in, line)){
-                    lines.push_back(line);
+                        if(!file1){
+                                cerr<<"cannot open : " <<argv[2] <<endl;
+                        }
+                        if(!file2){
+                                cerr<<"cannot open/create : " <<argv[3] <<endl;
+                        }
+
+                        while(getline(file1, text)){
+                                texts.push_back(text);
+                        }
+
+                        for(const string& line : texts){
+                                Ofor.writeIn(file2, line);
+                        }
+                        file1.close();
+                        file2.close();
                 }
-                for (const string& ln : lines){
-                    Ofor.writeIn(out, ln);
+                else if(argv[1] == editCommand){
+                        string text;
+                        ofstream file(argv[2], ios::app);
+
+                        if(!file){
+                                cerr<<"file not exist : " <<argv[2] <<endl;
+                        }
+                        else{
+                                cout<<"enter your text/code : " <<endl;
+                                while(getline(cin, text)){
+                                        if(text == "exit")
+                                                break;
+                                        Ofor.writeIn(file, text);
+                                }
+                        }file.close();
                 }
-            }
-    }        cout<<"file copied successfully" <<endl;
+        }
+
         return 0;
 }
