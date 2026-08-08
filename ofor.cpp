@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void ofor::readFile(ifstream& input){
+void ofor::openFile(ifstream& input){
 	string line;
 	vector<string> lines;
 	while (getline(input, line)){
